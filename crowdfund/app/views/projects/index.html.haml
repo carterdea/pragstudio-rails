@@ -1,9 +1,9 @@
-%h1 #{@projects.size} Projects
+%h1= pluralize(@projects.size, 'Project')
 - @projects.each do |project|
   %article
     %header
-      %h2= project.name
-    %p= project.description
+      %h2=link_to project.name, project
+    %p= truncate(project.description, length: 150, separator: ' ', ommission: '...')
     %table
       %tr
         %th Website:
@@ -13,4 +13,4 @@
         %td= number_to_currency(project.target_pledge_amount)
       %tr
         %th End Date:
-        %td= project.pledging_ends_on.to_formatted_s(:long)
+        %td= time_remaining(project.pledging_ends_on)

@@ -1,9 +1,10 @@
-%h1= "#{@events.size} Events"
+%h1= pluralize(@events.size, 'Event')
 - @events.each do |event|
   %article
     %header
-      %h2= event.name
-    %p= event.description
+      %h2
+        =link_to(event.name, event)
+    %p= truncate(event.description, length: 35, separator: ' ')
     %table
       %tr
         %th When:
@@ -13,5 +14,5 @@
         %td= event.location
       %tr
         %th Price:
-        %td= number_to_currency(event.price)
+        %td= format_price(event)
     

@@ -1,0 +1,15 @@
+%article
+  %header
+    %h2= @project.name
+  %p= @project.description
+  %table
+    %tr
+      %th Website:
+      %td= @project.website
+    %tr
+      %th Goal:
+      %td= number_to_currency(@project.target_pledge_amount)
+    %tr
+      %th End Date:
+      %td= time_remaining(@project.pledging_ends_on)
+=link_to "All Projects", root_path
