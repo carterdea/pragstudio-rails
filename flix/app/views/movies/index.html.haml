@@ -1,0 +1,16 @@
+%h1 #{@movies.size} Movies
+- @movies.each do |movie|
+  %article
+    %header
+      %h2= movie.title
+    %p= movie.description
+    %table
+      %tr
+        %th Released:
+        %td= movie.released_on.to_formatted_s(:long)
+      %tr
+        %th Rating:
+        %td= movie.rating
+      %tr
+        %th Total Gross:
+        %td= number_to_currency(movie.total_gross)

@@ -1,0 +1,16 @@
+%h1 #{@projects.size} Projects
+- @projects.each do |project|
+  %article
+    %header
+      %h2= project.name
+    %p= project.description
+    %table
+      %tr
+        %th Website:
+        %td= project.website
+      %tr
+        %th Goal:
+        %td= number_to_currency(project.target_pledge_amount)
+      %tr
+        %th End Date:
+        %td= project.pledging_ends_on.to_formatted_s(:long)

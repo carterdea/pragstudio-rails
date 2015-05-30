@@ -1,0 +1,17 @@
+%h1= "#{@events.size} Events"
+- @events.each do |event|
+  %article
+    %header
+      %h2= event.name
+    %p= event.description
+    %table
+      %tr
+        %th When:
+        %td= event.starts_at
+      %tr
+        %th Where:
+        %td= event.location
+      %tr
+        %th Price:
+        %td= number_to_currency(event.price)
+    
