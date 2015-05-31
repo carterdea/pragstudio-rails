@@ -1,8 +1,11 @@
 %h1= pluralize(@projects.size, 'Project')
+
+= link_to "Add New Project", new_project_path
+
 - @projects.each do |project|
   %article
     %header
-      %h2=link_to project.name, project
+      %h2= link_to project.name, project
     %p= truncate(project.description, length: 150, separator: ' ', ommission: '...')
     %table
       %tr

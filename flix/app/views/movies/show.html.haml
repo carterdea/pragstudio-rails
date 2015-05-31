@@ -5,7 +5,7 @@
   %table
     %tr
       %th Released:
-      %td= "#{@movie.released_on.to_s(:default)} (#{time_ago_in_words(@movie.released_on)} ago)"
+      %td #{@movie.released_on.to_s(:default)} (#{time_ago_in_words(@movie.released_on)} ago)
     %tr
       %th Rating:
       %td= @movie.rating
@@ -13,3 +13,5 @@
       %th Total Gross:
       %td= format_total_gross(@movie)
 =link_to "All Movies", root_path
+| 
+=link_to "Edit", edit_movie_path(@movie)

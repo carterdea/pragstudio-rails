@@ -1,0 +1,20 @@
+%h1= "Edit #{@movie.title}"
+
+= form_for(@movie) do |f|
+  = f.label :title
+  = f.text_field :title
+  %br
+  = f.label :description
+  = f.text_area :description, cols: 40, rows: 7
+  %br
+  = f.label :released_on
+  = f.datetime_select :released_on
+  %br
+  = f.label :rating
+  = f.text_field :rating
+  %br
+  = f.label :total_gross
+  = f.number_field :total_gross
+  %br
+  = f.submit "Save Changes"
+
