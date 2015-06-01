@@ -14,7 +14,7 @@ describe "Editing a project" do
 
     fill_in 'Name', with: "Updated Project Name"
 
-    click_button 'Save Changes'
+    click_button 'Update Project'
 
     expect(current_path).to eq(project_path(project))
 

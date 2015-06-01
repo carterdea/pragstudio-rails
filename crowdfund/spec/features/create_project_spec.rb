@@ -15,6 +15,8 @@ describe "Creating a new project" do
     # fill_in "Pledging ends on", with: (Date.today.year + 1).to_s
     fill_in "project[pledging_ends_on]", with: '2015-09-01'
     fill_in "Website", with: "http://example.com"
+    fill_in "Team members", with: "The team members"
+    fill_in "Image file name", with: "project.png"
 
     click_button "Create Project"
 
@@ -24,6 +26,7 @@ describe "Creating a new project" do
     expect(page).to have_text("A brand new project")
     expect(page).to have_text("$3,000.00")
     expect(page).to have_text("http://example.com")
+    expect(page).to have_text("The team members")
   end
 
 end

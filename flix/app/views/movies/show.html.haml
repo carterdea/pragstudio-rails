@@ -1,8 +1,15 @@
 %article
   %header
+    = image_for(@movie)
     %h2= @movie.title
   %p= @movie.description
   %table
+    %tr
+      %th Director:
+      %td= @movie.director
+    %tr
+      %th Cast:
+      %td= @movie.cast
     %tr
       %th Released:
       %td #{@movie.released_on.to_s(:default)} (#{time_ago_in_words(@movie.released_on)} ago)
@@ -10,8 +17,15 @@
       %th Rating:
       %td= @movie.rating
     %tr
+      %th Duration:
+      %td= @movie.duration
+    %tr
       %th Total Gross:
       %td= format_total_gross(@movie)
-=link_to "All Movies", root_path
+= link_to "All Movies", root_path
 | 
-=link_to "Edit", edit_movie_path(@movie)
+= link_to "Edit", edit_movie_path(@movie)
+|
+= link_to "Delete", movie_path(@movie), method: :delete, data:{confirm: 'Are you sure?'}
+
+= render 'footer'

@@ -6,4 +6,12 @@ module ProjectsHelper
       distance_of_time_in_words(Time.now, project) + " remaining"
     end
   end
+
+  def image_for(project)
+    if project.image_file_name.blank?
+      image_tag('placeholder.jpg')
+    else
+      image_tag(project.image_file_name)
+    end
+  end
 end

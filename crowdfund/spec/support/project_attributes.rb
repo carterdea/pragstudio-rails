@@ -4,6 +4,8 @@ def project_attributes(override = {})
     description: "Kickstarter for Adoptions",
     target_pledge_amount: 4000000.00,
     pledging_ends_on: 5.days.from_now,
-    website: "http://www.adopttogether.org"
+    website: "http://www.adopttogether.org",
+    team_members: "Hank Fortener",
+    image_file_name: "adoptogether.jpg"
   }.merge(override)
 end

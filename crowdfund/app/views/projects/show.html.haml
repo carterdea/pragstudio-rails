@@ -1,5 +1,6 @@
 %article
   %header
+    = image_for(@project)
     %h2= @project.name
   %p= @project.description
   %table
@@ -7,11 +8,16 @@
       %th Website:
       %td= @project.website
     %tr
+      %th Team Members:
+      %td= @project.team_members
+    %tr
       %th Goal:
       %td= number_to_currency(@project.target_pledge_amount)
     %tr
       %th End Date:
       %td= time_remaining(@project.pledging_ends_on)
-=link_to "All Projects", root_path
+= link_to "All Projects", root_path
 | 
-=link_to "Edit", edit_project_path(@project)
+= link_to "Edit", edit_project_path(@project)
+|
+= link_to "Delete", project_path(@project), method: :delete, data:{confirm: 'Are you sure?'}

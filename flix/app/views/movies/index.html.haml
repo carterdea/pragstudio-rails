@@ -5,9 +5,16 @@
 - @movies.each do |movie|
   %article
     %header
+      = image_for(movie)
       %h2=link_to movie.title, movie
     %p= truncate(movie.description, length: 40, separator: ' ', omission: '...')
     %table
+      %tr
+        %th Director:
+        %td= movie.director
+      %tr
+        %th Cast:
+        %td= movie.cast
       %tr
         %th Released:
         %td #{movie.released_on.to_s(:default)} (#{time_ago_in_words(movie.released_on)} ago)
@@ -15,5 +22,10 @@
         %th Rating:
         %td= movie.rating
       %tr
+        %th Duration:
+        %td= movie.duration
+      %tr
         %th Total Gross:
         %td= format_total_gross(movie)
+
+= render 'footer'

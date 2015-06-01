@@ -5,12 +5,16 @@
 - @projects.each do |project|
   %article
     %header
+      = image_for(project)
       %h2= link_to project.name, project
     %p= truncate(project.description, length: 150, separator: ' ', ommission: '...')
     %table
       %tr
         %th Website:
         %td= project.website
+      %tr
+        %th Team Members:
+        %td= project.team_members
       %tr
         %th Goal:
         %td= number_to_currency(project.target_pledge_amount)

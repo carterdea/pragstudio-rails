@@ -11,6 +11,8 @@ describe 'Viewing an individual project' do
     expect(page).to have_text("$4,000,000.00")
     expect(page).to have_text("5 days remaining")
     expect(page).to have_text(project.website)
+    expect(page).to have_text(project.team_members)
+    expect(page).to have_selector("img[src$='#{project.image_file_name}']")
   end
 
   it "shows the number of days remaining if the end date is in the future" do

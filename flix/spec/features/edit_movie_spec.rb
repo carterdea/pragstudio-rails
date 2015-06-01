@@ -14,7 +14,7 @@ describe "editing a movie" do
 
     fill_in 'Title', with: "Updated Movie Title"
 
-    click_button 'Save Changes'
+    click_button 'Update Movie'
 
     expect(current_path).to eq(movie_path(movie))
 
