@@ -1,0 +1,97 @@
+$primary-color: #237cb3;
+$secondary-color: #f0f0f0;
+$red: #b22;
+
+body {
+  font: 12px/1.6 sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+header.page-header {
+  background: $primary-color;
+  border-bottom: 5px solid darken($primary-color, 25%);
+  color: $secondary-color;
+  padding: 5px;
+
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.flash {
+  color: $primary-color;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: #ffc 0 0 4px;
+
+  &.notice {
+    background-color: lighten($primary-color, 30%);
+  }
+
+  &.alert {
+    background-color: lighten($red, 30%);
+  }
+}
+
+.main {
+  margin: 20px;
+}
+
+aside {
+  background: $secondary-color;
+  float: right;
+  padding: 5px;
+  width: 200px;
+}
+
+article.event {
+  clear: left;
+  margin-bottom: 10px;
+
+  img {
+    float: left;
+    margin-right: 10px;
+    max-width: 150px;
+    height: auto;
+  }
+}
+
+form {
+  background: lighten($primary-color, 50%);
+  padding: 20px;
+}
+
+.field_with_errors {
+  color: $red;
+}
+
+.errors {
+  background: lighten($red, 50%);
+  margin-bottom: 10px;
+  padding: 10px 20px 20px;
+}
+
+label {
+  display: inline-block;
+  font-size: 16px;
+}
+
+input, textarea {
+  font: 16px sans-serif;
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+footer {
+  background: $secondary-color;
+  border-top: 5px solid darken($secondary-color, 25%);
+  color: $primary-color;
+  margin: 0;
+  padding: 10px;
+}

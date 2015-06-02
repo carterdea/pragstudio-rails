@@ -1,0 +1,67 @@
+@import "colors";
+
+body {
+  font: 12px/1.6 sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: $primary-color;
+}
+
+header.page-header {
+  background: $primary-color;
+  border-bottom: 3px solid darken($primary-color, 10%);
+  color: $secondary-color;
+  padding: 10px;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.flash {
+  background: darken($primary-color,20%);
+  color: #fff;
+  padding: 5px 10px;
+
+  &.alert {
+    background: lighten($primary-color,20%);
+  }
+
+  &.danger {
+    background: darken($primary-color,30%);
+    font-weight: bold;
+  }
+}
+
+aside {
+  background: $tertiary-color;
+  border-left: 3px solid darken($tertiary-color, 10%);
+  float: right;
+  height: 100vh;
+  padding: 5px;
+  width: 300px;
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    color: $secondary-color;
+  }
+}
+
+section.main {
+  padding: 10px;
+}
+
+footer {
+  background: $secondary-color;
+  border-top: 3px solid darken($secondary-color, 10%);
+  color: $primary-color;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}

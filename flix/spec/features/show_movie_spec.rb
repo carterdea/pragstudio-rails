@@ -2,11 +2,11 @@ require 'rails_helper'
 
 describe 'Viewing an individual movie' do
   it "Shows movie's attributes" do
-    movie = Movie.create(title: "Ironman",
+    movie = Movie.create(movie_attributes(title: "Ironman",
                         rating: "PG-13",
                         total_gross: 318412101.00,
                         description: "Jet-setting industrialist Tony Stark builds a high-tech suit of armor and vows to protect the world as Iron Man.",
-                        released_on: "2008-05-02")
+                        released_on: "2008-05-02"))
   
     visit movie_url(movie)
 

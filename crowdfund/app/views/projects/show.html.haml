@@ -1,4 +1,4 @@
-%article
+%article.project
   %header
     = image_for(@project)
     %h2= @project.name
@@ -16,8 +16,7 @@
     %tr
       %th End Date:
       %td= time_remaining(@project.pledging_ends_on)
-= link_to "All Projects", root_path
-| 
-= link_to "Edit", edit_project_path(@project)
-|
-= link_to "Delete", project_path(@project), method: :delete, data:{confirm: 'Are you sure?'}
+
+  = link_to "Edit", edit_project_path(@project)
+  |
+  = link_to "Delete", project_path(@project), method: :delete, data:{confirm: 'Are you sure?'}

@@ -1,0 +1,17 @@
+!!! 5
+%html
+  %head
+    %title Crowdfund
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    = render 'layouts/header'
+    = render 'layouts/flash'
+
+    / = render 'layouts/sidebar'
+
+    %section.main
+      = yield
+
+    = render 'layouts/footer'

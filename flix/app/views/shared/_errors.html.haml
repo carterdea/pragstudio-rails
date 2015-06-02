@@ -1,0 +1,7 @@
+-if @movie.errors.any?
+  %section.errors
+    %h3 Oops! The #{@movie.class.name.titleize.downcase} could not be saved.
+    %p Please correct the folowing #{pluralize(@movie.errors.count, "error")}:
+    %ul
+      -@movie.errors.full_messages.each do |message|
+        %li= message

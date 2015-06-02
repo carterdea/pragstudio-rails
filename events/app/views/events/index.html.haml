@@ -1,7 +1,7 @@
 %h1= pluralize(@events.size, 'Event')
 
 - @events.each do |event|
-  %article
+  %article.event
     %header
       = image_for(event)
       %h2
@@ -18,4 +18,3 @@
       %tr
         %th Price:
         %td= format_price(event)
-    

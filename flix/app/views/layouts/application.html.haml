@@ -1,18 +1,18 @@
 !!! 5
 %html
   %head
-    %title Events
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    %title Super-Heroic Flix
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
     = render 'layouts/header'
+
+    = render 'layouts/flashes'
+
     = render 'layouts/sidebar'
 
     %section.main
-      - if flash[:notice]
-        .flash.notice  
-          = flash[:notice]
       = yield
 
     = render 'layouts/footer'

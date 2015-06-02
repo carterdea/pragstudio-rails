@@ -1,13 +1,11 @@
 %h1= pluralize(@movies.size, 'Movie')
 
-= link_to "Add New Movie", new_movie_path
-
 - @movies.each do |movie|
-  %article
+  %article.movie
     %header
       = image_for(movie)
       %h2=link_to movie.title, movie
-    %p= truncate(movie.description, length: 40, separator: ' ', omission: '...')
+    %p= truncate(movie.description, length: 100, separator: ' ', omission: '...')
     %table
       %tr
         %th Director:
@@ -27,5 +25,3 @@
       %tr
         %th Total Gross:
         %td= format_total_gross(movie)
-
-= render 'footer'

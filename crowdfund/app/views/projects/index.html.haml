@@ -1,9 +1,7 @@
 %h1= pluralize(@projects.size, 'Project')
 
-= link_to "Add New Project", new_project_path
-
 - @projects.each do |project|
-  %article
+  %article.project
     %header
       = image_for(project)
       %h2= link_to project.name, project
