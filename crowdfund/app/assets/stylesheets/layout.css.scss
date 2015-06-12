@@ -78,6 +78,10 @@ input, textarea {
   padding: 4px;
 }
 
+select {
+  display: block;
+}
+
 footer {
   color: $light-grey;
   background: $black;

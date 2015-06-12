@@ -2,7 +2,8 @@
   %header
     =image_for(@event)
     %h2= @event.name
-    %h3= @event.capacity
+    %h3 #{pluralize(@event.capacity, 'spot')} available
+    = link_to "Who is Attending?", event_registrations_path(@event)
   %p= @event.description
   %table
     %tr
@@ -14,7 +15,9 @@
     %tr
       %th Price:
       %td= format_price(@event)
-
+  = register_link(@event)
+  %p #{pluralize(@event.spots_left, "spot")} left
+  %p= link_to "Who's Registered?", event_registrations_path(@event)
 = link_to "Edit", edit_event_path(@event)
 |
 = link_to "Delete", event_path(@event), method: :delete, data: {confirm: 'Are you sure?'}

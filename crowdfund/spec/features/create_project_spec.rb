@@ -25,7 +25,7 @@ describe "Creating a new project" do
     expect(page).to have_text("New Project Name")
     expect(page).to have_text("A brand new project")
     expect(page).to have_text("$3,000.00")
-    expect(page).to have_text("http://example.com")
+    expect(page).to have_link('Visit', href: "http://example.com")
     expect(page).to have_text("The team members")
 
     expect(page).to have_text("Successfully created the project.")

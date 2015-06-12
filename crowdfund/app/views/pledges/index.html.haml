@@ -1,0 +1,5 @@
+%h1 Pledges for #{@project.name}
+
+%ol
+  - @project.pledges.each do |p|
+    %li #{mail_to(p.email, p.name)} pledges $#{p.amount.to_i} and said, "#{p.comment}"

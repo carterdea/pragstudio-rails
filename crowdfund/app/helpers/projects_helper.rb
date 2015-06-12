@@ -14,4 +14,12 @@ module ProjectsHelper
       image_tag(project.image_file_name)
     end
   end
+
+  def pledge_or_funded(project)
+    if project.funded?
+      "Funded!"
+    else
+      link_to "Make a Pledge", new_project_pledge_path(@project)
+    end
+  end
 end

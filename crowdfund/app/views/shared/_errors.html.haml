@@ -1,8 +1,7 @@
-- if @project.errors.any?
+- if object.errors.any?
   %section.errors
-    %h3 Oops! The #{@project.class.name.titleize.downcase} couldn't be saved
-    %p Please correct the following #{pluralize(@project.errors.count, 'error')}:
+    %h3 Oops! The #{object.class.name.titleize.downcase} couldn't be saved
+    %p Please correct the following #{pluralize(object.errors.count, 'error')}:
     %ul
-      - @project.errors.full_messages.each do |message|
+      - object.errors.full_messages.each do |message|
         %li= message
-

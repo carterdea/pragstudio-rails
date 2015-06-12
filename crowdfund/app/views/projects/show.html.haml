@@ -3,10 +3,11 @@
     = image_for(@project)
     %h2= @project.name
   %p= @project.description
+  = link_to "Pledges", project_pledges_path(@project)
   %table
     %tr
       %th Website:
-      %td= @project.website
+      %td= link_to "Visit", @project.website
     %tr
       %th Team Members:
       %td= @project.team_members
@@ -14,9 +15,14 @@
       %th Goal:
       %td= number_to_currency(@project.target_pledge_amount)
     %tr
+      %th Amount Remaining:
+      %td Only #{number_to_currency(@project.amount_outstanding)} left!
+    %tr
       %th End Date:
       %td= time_remaining(@project.pledging_ends_on)
 
+  = pledge_or_funded(@project)
+  |
   = link_to "Edit", edit_project_path(@project)
   |
   = link_to "Delete", project_path(@project), method: :delete, data:{confirm: 'Are you sure?'}

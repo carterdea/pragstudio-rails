@@ -1,7 +1,7 @@
-- if @event.errors.any?
+- if object.errors.any?
   %section.errors
     %h3 Oops! Your form could not be saved!
-    %p Please correct the following #{pluralize(@event.errors.count, "error")}:
+    %p Please correct the following #{pluralize(object.errors.count, "error")}:
     %ul
-    - @event.errors.full_messages.each do |message|
+    - object.errors.full_messages.each do |message|
       %li= message

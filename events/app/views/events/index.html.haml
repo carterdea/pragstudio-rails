@@ -6,7 +6,7 @@
       = image_for(event)
       %h2
         = link_to(event.name, event)
-      %h3= pluralize(event.capacity, 'spot')
+      %h3 #{pluralize(event.spots_left, 'spot')} left
     %p= truncate(event.description, length: 35, separator: ' ')
     %table
       %tr

@@ -93,4 +93,54 @@ describe "a project" do
 
     expect(project.errors[:image_file_name].any?).to eq(true)
   end
+
+  it "has many pledges" do
+    project = Project.new(project_attributes)
+
+    pledge1 = project.pledges.new(pledge_attributes)
+    pledge2 = project.pledges.new(pledge_attributes)
+
+    expect(project.pledges).to include(pledge1)
+    expect(project.pledges).to include(pledge2)
+  end
+
+  it "deletes associated pledges" do
+    project = Project.create(project_attributes)
+
+    project.pledges.create(pledge_attributes)
+
+    expect {
+      project.destroy
+    }.to change(Pledge, :count).by(-1)
+  end
+
+  it "calculates the total amount pledged as the sum of all the pledges" do
+    project = Project.create(project_attributes)
+    plegdge = project.pledges.create(pledge_attributes(amount: 25.00))
+    plegdge = project.pledges.create(pledge_attributes(amount: 50.00))
+
+    expect(project.total_pledges).to eq(75.00)
+  end
+
+  it "calculates the pledge amount outstanding" do
+    project = Project.create(project_attributes(target_pledge_amount: 100.00))
+    project.pledges.create(pledge_attributes(amount: 50.00))
+
+    expect(project.amount_outstanding).to eq(50.00)
+  end
+
+  it "is funded if the target amount has been reached" do
+    project = Project.create(project_attributes(target_pledge_amount: 100.00))
+    project.pledges.create(pledge_attributes(amount: 50.00))
+    project.pledges.create(pledge_attributes(amount: 50.00))
+
+    expect(project.funded?).to eq(true)
+  end
+
+  it "is not funded if the target pledge amount has not been reached" do
+    project = Project.create(project_attributes(target_pledge_amount: 100.00))
+    project.pledges.create(pledge_attributes(amount: 50.00))
+
+    expect(project.funded?).to eq(false)
+  end
 end

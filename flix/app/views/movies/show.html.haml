@@ -3,6 +3,7 @@
     = image_for(@movie)
     %h2= @movie.title
   %p= @movie.description
+  = link_to "Reviews", movie_reviews_path(@movie)
   %table
     %tr
       %th Director:
@@ -21,8 +22,19 @@
       %td= @movie.duration
     %tr
       %th Total Gross:
-      %td= format_total_gross(@movie)
+      %td= low_gross_or_cult(@movie)
+    %tr
+      %th Average Reviews:
+      %td= format_average_stars(@movie)
+  - if @movie.recent_reviews.any?
+    %h3 Recent Reviews
+    %ol
+      - @movie.recent_reviews.each do |review|
+        %li #{review.name} gives it #{pluralize(review.stars, "star")} and says, "#{review.comment}"
+    %p Read all #{link_to pluralize(@movie.reviews.size, "review"), movie_reviews_path(@movie)}
 
+= link_to "Add a Review", new_movie_review_path(@movie)
+|
 = link_to "Edit", edit_movie_path(@movie)
 |
 = link_to "Delete", movie_path(@movie), method: :delete, data:{confirm: 'Are you sure?'}

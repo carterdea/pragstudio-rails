@@ -38,6 +38,7 @@ class MoviesController < ApplicationController
     @movie.destroy
     redirect_to movies_path, alert: "Movie successfully deleted!"
   end
+
 private
   def cleaned_params
     params.require(:movie).permit(:title, :description, :rating, :total_gross, :director, :cast, :released_on, :image_file_name, :duration)

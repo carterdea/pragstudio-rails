@@ -9,3 +9,12 @@ def project_attributes(override = {})
     image_file_name: "adoptogether.jpg"
   }.merge(override)
 end
+
+def pledge_attributes(override = {})
+  {
+    name: "John Doe",
+    email: "johndoe@example.com",
+    comment: "Keep up the great work!",
+    amount: 100,
+  }.merge(override)
+end

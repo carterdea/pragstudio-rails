@@ -38,3 +38,8 @@ input, textarea {
   display: block;
   margin-bottom: 10px;
 }
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: inline-block;
+}

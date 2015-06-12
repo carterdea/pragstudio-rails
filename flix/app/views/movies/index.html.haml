@@ -24,4 +24,7 @@
         %td= movie.duration
       %tr
         %th Total Gross:
-        %td= format_total_gross(movie)
+        %td= low_gross_or_cult(movie)
+      %tr
+        %th Average Reviews:
+        %td= format_average_stars(movie)

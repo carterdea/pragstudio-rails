@@ -1,0 +1,13 @@
+%h1 New Pledge for #{@project.name}
+
+= form_for([@project, @pledge]) do |f|
+  = render 'shared/errors', object: @pledge
+  = f.label :name, autofocus: true
+  = f.text_field :name
+  = f.label :email
+  = f.text_field :email
+  = f.label :amount
+  = f.select :amount, Pledge::AMOUNT_LEVELS
+  = f.label :comment, "Comment (optional)"
+  = f.text_area :comment, cols: 40, rows: 7
+  = f.submit "Make a Pledge"
