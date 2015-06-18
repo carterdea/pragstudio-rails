@@ -1,5 +1,11 @@
 %header.page-header
-  %h1 Flix
+  %h1= link_to "Flix", root_url
   %nav
     %ul
-      %li=link_to "Sign Up", signup_path
+      - if current_user
+        %li= link_to current_user.name, current_user
+        %li= link_to "Settings", edit_user_path(current_user)
+        %li= link_to "Sign Out", session_path, method: :delete
+      - else
+        %li= link_to "Sign Up", signup_path
+        %li= link_to "Sign In", signin_path

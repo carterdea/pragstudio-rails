@@ -18,17 +18,25 @@ header.page-header {
 
   h1 {
     text-align: center;
+    a {
+      color: $white;
+      text-decoration: none;
+    }
   }
 
   nav {
     text-align: right;
     ul {
       list-style: none;
-      a {
-        color: lighten($primary-color, 40%);
-        text-decoration: none;
-        &:hover {
-          color: $white;
+      li {
+        display: inline;
+        margin-left: 5px;
+        a {
+          color: lighten($primary-color, 40%);
+          text-decoration: none;
+          &:hover {
+            color: $white;
+          }
         }
       }
     }
@@ -58,8 +66,12 @@ aside {
   padding: 5px;
   width: 300px;
 
-  li {
-    list-style: none;
+  ul {
+    margin-left: 0;
+    padding-left: 10px;
+    li {
+      list-style: none;
+    }
   }
 
   a {

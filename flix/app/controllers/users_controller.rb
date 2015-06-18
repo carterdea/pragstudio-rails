@@ -12,8 +12,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       redirect_to @user, notice: "Thank you for signing up!"
     else
       render :new
@@ -36,11 +37,12 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    session[:user_id] = nil
     redirect_to root_url, alert: "Account successfully deleted. We're sorry to see you go! 😢"
   end
 
 private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :username, :password, :password_confirmation)
   end
 end
