@@ -19,6 +19,20 @@ header.page-header {
   h1 {
     text-align: center;
   }
+
+  nav {
+    text-align: right;
+    ul {
+      list-style: none;
+      a {
+        color: lighten($primary-color, 40%);
+        text-decoration: none;
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
 }
 
 .flash {

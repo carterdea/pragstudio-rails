@@ -1,0 +1,20 @@
+= form_for(object) do |f|
+  = render 'shared/errors', object: object
+  %fieldset
+    %ol
+      %li.required
+        = f.label :name
+        = f.text_field :name, size: 40, autofocus: true
+      %li.required
+        = f.label :email
+        = f.email_field :email, size: 40
+      %li.required
+        = f.label :password
+        = f.password_field :password, size: 40
+      %li.required
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, size: 40
+    - if @user.new_record?
+      %p= f.submit "Create an Account"
+    - else
+      %p= f.submit "Update Account"

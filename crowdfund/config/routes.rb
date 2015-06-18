@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources:projects do
     resources :pledges
   end
+  get "signup" => "users#new"
 end
