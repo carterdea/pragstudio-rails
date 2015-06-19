@@ -2,6 +2,6 @@
 %ol
   - @movie.reviews.each do |r|
     %li
-      #{r.name} gives it #{pluralize(r.stars, "star")} and says, "#{r.comment}"
+      #{profile_image_for(r.user, size: 35)} #{link_to r.user.name, r.user} gives it #{pluralize(r.stars, "star")} and says, "#{r.comment}"
       = link_to "Edit", edit_movie_review_path(@movie, r), :class => "small"
       = link_to "Delete", movie_review_path(@movie, r), :class => "small",  method: :delete, data:{confirm: 'Are you sure?'}

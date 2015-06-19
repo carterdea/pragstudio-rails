@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe "Creating a new movie" do
+  before do
+    user = User.create!(user_attributes(admin: true))
+    sign_in(user)
+  end
   it "saves the movie and shows the movie's details" do
     visit movies_url
 

@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 describe "editing a movie" do
+  before do
+    user = User.create!(user_attributes(admin: true))
+    sign_in(user)
+  end
   it "updates a movie and shows the movie's updated details" do
+    
     movie = Movie.create(movie_attributes)
 
     visit movie_url(movie)

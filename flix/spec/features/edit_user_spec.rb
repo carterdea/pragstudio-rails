@@ -1,13 +1,15 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Editing a user" do
 
   it "updates the user and shows the user's updated details" do
     user = User.create!(user_attributes)
 
-    visit user_url(user)
+    sign_in(user)
 
-    click_link "Edit #{user.name}"
+    visit user_path(user)
+
+    click_link "Edit User"
 
     expect(current_path).to eq(edit_user_path(user))
 
@@ -26,7 +28,9 @@ describe "Editing a user" do
   it "does not update the user if it's invalid" do
     user = User.create!(user_attributes)
 
-    visit edit_user_url(user)
+    sign_in(user)
+
+    visit edit_user_path(user)
 
     fill_in 'Name', with: " "
 

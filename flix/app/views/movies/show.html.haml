@@ -26,15 +26,29 @@
     %tr
       %th Average Reviews:
       %td= format_average_stars(@movie)
+  - if current_user
+    - if @current_favorite
+      = button_to "Unfavorite", movie_favorite_path(@movie, @current_favorite), method: :delete
+    - else
+      = button_to "Favorite", movie_favorites_path(@movie)
+
+  - if @fans.any?
+    %h3= pluralize(@fans.size, 'Fan')
+    %ul
+      - @fans.each do |user|
+        %li
+          / = profile_image_for(user, size: 15)
+          = link_to user.name, user
   - if @movie.recent_reviews.any?
     %h3 Recent Reviews
     %ol
       - @movie.recent_reviews.each do |review|
-        %li #{review.name} gives it #{pluralize(review.stars, "star")} and says, "#{review.comment}"
+        %li #{profile_image_for(review.user, size: 35)} #{link_to review.user.name, review.user} gives it #{pluralize(review.stars, "star")} and says, "#{review.comment}"
     %p Read all #{link_to pluralize(@movie.reviews.size, "review"), movie_reviews_path(@movie)}
 
 = link_to "Add a Review", new_movie_review_path(@movie)
-|
-= link_to "Edit", edit_movie_path(@movie)
-|
-= link_to "Delete", movie_path(@movie), method: :delete, data:{confirm: 'Are you sure?'}
+- if current_user_admin?
+  |
+  = link_to "Edit", edit_movie_path(@movie)
+  |
+  = link_to "Delete", movie_path(@movie), method: :delete, data:{confirm: 'Are you sure?'}

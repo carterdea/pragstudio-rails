@@ -30,7 +30,7 @@ header.page-header {
       list-style: none;
       li {
         display: inline;
-        margin-left: 5px;
+        margin-left: 10px;
         a {
           color: lighten($primary-color, 40%);
           text-decoration: none;
@@ -64,7 +64,7 @@ aside {
   float: right;
   height: 100vh;
   padding: 5px;
-  width: 300px;
+  width: 31.25%; /* 300/960 = .3125 */
 
   ul {
     margin-left: 0;

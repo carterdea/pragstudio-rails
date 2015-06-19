@@ -1,6 +1,12 @@
 class User < ActiveRecord::Base
   has_secure_password
+
+  has_many :reviews, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_movies, through: :favorites, source: :movie
+  
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  
   validates :name, presence: true
   validates :username, presence: true, format: /\A[A-Z0-9]+\z/i, uniqueness: { case_sensitive: false }
   validates :email, presence: true, format: VALID_EMAIL_REGEX, uniqueness: { case_sensitive: false }
