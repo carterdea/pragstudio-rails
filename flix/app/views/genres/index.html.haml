@@ -1,0 +1,6 @@
+%h1 Genres
+%ul
+  - @genres.each do |genre|
+    %li #{genre.name } | #{link_to "Edit", edit_genre_path(genre)} | #{link_to "Delete", genre_path(genre), method: :delete, data:{confirm: "Are you sure?"}}
+
+= link_to "Add a Genre", new_genre_path

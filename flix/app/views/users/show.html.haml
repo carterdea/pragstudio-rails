@@ -1,14 +1,10 @@
+- provide(:title, @user.name)
 %article#user
   %header
     = profile_image_for(@user)
     %h1= @user.name
     %p= mail_to(@user.email)
     %p Member since #{@user.created_at.strftime("%B, %Y")}
-  - if @favorite_movies.any?
-    %h3= pluralize(@favorite_movies.size, 'Favorite Movie')
-    %ul
-      - @favorite_movies.each do |movie|
-        %li= link_to movie.title, movie
   - if @reviews.any?
     %h3 Reviews
     %ul
@@ -21,3 +17,6 @@
     - if current_user_admin?
       |
       = link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account?"}, class: 'button'
+
+= content_for(:side) do
+  = render 'user_sidebar_extras'

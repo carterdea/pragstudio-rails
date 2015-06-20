@@ -1,3 +1,4 @@
+- provide(:title, "#{@movie.title} (#{@movie.released_on.year})")
 %article.movie
   %header
     = image_for(@movie)
@@ -26,19 +27,13 @@
     %tr
       %th Average Reviews:
       %td= format_average_stars(@movie)
+
   - if current_user
     - if @current_favorite
       = button_to "Unfavorite", movie_favorite_path(@movie, @current_favorite), method: :delete
     - else
       = button_to "Favorite", movie_favorites_path(@movie)
 
-  - if @fans.any?
-    %h3= pluralize(@fans.size, 'Fan')
-    %ul
-      - @fans.each do |user|
-        %li
-          / = profile_image_for(user, size: 15)
-          = link_to user.name, user
   - if @movie.recent_reviews.any?
     %h3 Recent Reviews
     %ol
@@ -52,3 +47,6 @@
   = link_to "Edit", edit_movie_path(@movie)
   |
   = link_to "Delete", movie_path(@movie), method: :delete, data:{confirm: 'Are you sure?'}
+
+= content_for(:side) do
+  = render 'movie_sidebar_extras'

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "A review" do
   it "belongs to a movie" do
-    movie = Movie.new(movie_attributes)
+    movie = Movie.create!(movie_attributes)
 
     review = movie.reviews.new(review_attributes)
 

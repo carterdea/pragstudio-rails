@@ -61,6 +61,7 @@ header.page-header {
 aside {
   background: $tertiary-color;
   border-left: 3px solid darken($tertiary-color, 10%);
+  color: $secondary-color;
   float: right;
   height: 100vh;
   padding: 5px;

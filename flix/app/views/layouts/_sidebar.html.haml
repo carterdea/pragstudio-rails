@@ -1,6 +1,8 @@
-%aside
+%aside#sidebar
   %nav
     %ul
       %li= link_to "All Movies", root_path
       - if current_user_admin?
         %li= link_to "Add New Movie", new_movie_path
+        %li= link_to "All Genres", genres_path
+  = content_for(:side)

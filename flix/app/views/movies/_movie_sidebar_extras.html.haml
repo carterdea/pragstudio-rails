@@ -1,0 +1,12 @@
+%strong Genres:
+%ul
+  - @genres.each do |genre|
+    %li= genre.name
+
+- if @fans.any?
+  %h3= pluralize(@fans.size, 'Fan')
+  %ul
+    - @fans.each do |user|
+      %li
+        / = profile_image_for(user, size: 15)
+        = link_to user.name, user

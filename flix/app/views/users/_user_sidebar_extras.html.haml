@@ -1,0 +1,5 @@
+- if @favorite_movies.any?
+  %h3= pluralize(@favorite_movies.size, 'Favorite Movie')
+  %ul
+    - @favorite_movies.each do |movie|
+      %li= link_to movie.title, movie

@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_movies, through: :favorites, source: :movie
+
+  scope :by_name, -> { order(:name) }
+  scope :not_admin, -> { by_name.where(admin: false) }
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   
