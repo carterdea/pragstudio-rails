@@ -1,5 +1,4 @@
 class RegistrationsController < ApplicationController
-
   before_action :set_event
 
   def index

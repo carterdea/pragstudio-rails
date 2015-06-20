@@ -6,7 +6,7 @@ class Movie < ActiveRecord::Base
   has_many :characterizations, dependent: :destroy
   has_many :genres, through: :characterizations
 
-  scope :unreleased, -> { where("released_on > ?", Time.now).order(released_on: :asc) }
+  scope :upcoming, -> { where("released_on > ?", Time.now).order(released_on: :asc) }
   scope :released, -> { where("released_on <= ?", Time.now).order(released_on: :asc) }
   scope :hits, -> { released.where("total_gross >= 300000000").order(total_gross: :desc) }
   scope :flops, -> { released.where("total_gross <= 50000000").order(total_gross: :asc) }
@@ -17,7 +17,10 @@ class Movie < ActiveRecord::Base
 
   RATINGS = %w(G PG PG-13 R NC-17)
 
-  validates :title, :released_on, :duration, :director, :cast, presence: true
+  before_validation :generate_slug
+
+  validates :released_on, :duration, :director, :cast, presence: true
+  validates :title, presence: true, uniqueness: true
   validates :description, length: {minimum: 25}
   validates :rating, inclusion: {in: RATINGS}
   validates :total_gross, numericality: {greater_than_or_equal_to: 0}
@@ -25,6 +28,7 @@ class Movie < ActiveRecord::Base
     with:    /\w+\.(gif|jpg|png)\z/i,
     message: "must reference a GIF, JPG, or PNG image"
   }
+  validates :slug, presence: true, uniqueness: true
 
   def flop?
     total_gross.blank? || total_gross < 50000000 && !(cult?)
@@ -44,5 +48,13 @@ class Movie < ActiveRecord::Base
 
   def average_stars
     reviews.average(:stars)
+  end
+
+  def to_param
+    slug
+  end
+
+  def generate_slug
+    self.slug ||= title.parameterize if title
   end
 end

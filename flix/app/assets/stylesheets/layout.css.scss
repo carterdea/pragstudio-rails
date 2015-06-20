@@ -77,6 +77,13 @@ aside {
 
   a {
     color: $secondary-color;
+    &.active {
+      color: darken($secondary-color, 40%);
+      text-decoration: none;
+      &:hover {
+        cursor: default;
+      }
+    }
   }
 }
 

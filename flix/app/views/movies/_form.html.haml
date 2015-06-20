@@ -18,6 +18,9 @@
   = f.text_field :duration
   = f.label :released_on
   = f.datetime_select :released_on
+  - unless @movie.new_record?
+    = f.label :slug
+    = f.text_field :slug
   = f.collection_check_boxes(:genre_ids, Genre.all, :id, :name)
   = f.submit
   = link_to "Cancel", movies_path
